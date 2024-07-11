@@ -11,6 +11,7 @@ app.use(
     })
 );
 //comment
+//comment2
 app.use(express.json());  //req and res convert to json obj or json array (data communicate)
 
 app.get('/users',(req,res) =>{
