@@ -9,7 +9,7 @@ const host = '127.0.0.1';
 app.use(cors()); 
 app.use(express.json());
 
-const uri = 'mongodb+srv://malithaparikalpa2:maliboy123@cluster3.r8eoad0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster3'
+const uri = 'mongodb+srv://malithaparikalpa2:malitha123@cluster0.hadwd73.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 
 const connect = async() =>{
     try{
