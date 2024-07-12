@@ -10,20 +10,33 @@ app.use(
         extended: true,
     })
 );
-//comment
-//comment2
+
 app.use(express.json());  //req and res convert to json obj or json array (data communicate)
 
 app.get('/users',(req,res) =>{
-   controller.getUsers(users =>{
-    res.send(users);
+   controller.getUsers((req,res,next) =>{
+    res.send();
    });
-//s
+
 })
 
-app.get('/users', (req,res) => {
-    const id = req.query.id;
-})
+app.post('/createusers', (req,res) => {
+    controller.addUser(req.body,(callback)=>{
+        res.send();
+    });
+});
+
+app.put('/updateusers', (req,res) => {
+    controller.updateUser(req.body,(callback)=>{
+        res.send(callback);
+    });
+});
+
+app.delete('/updateusers', (req,res) => {
+    controller.deleteUser(req.body,(callback)=>{
+        res.send(callback);
+    });
+});
 
 module.exports = app;
 
