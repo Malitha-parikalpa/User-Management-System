@@ -1,6 +1,6 @@
-const user = require('.model');
+const User = require('./model');
 
-//reyreave
+//retreave user
 const getUsers = (req,res,next) => {
     User.find()
         .then(response =>{
@@ -15,7 +15,7 @@ const getUsers = (req,res,next) => {
 const addUser = (req,res,next) => {
     const user = new User({
         id : req.body.id,
-        name : req.body,name,
+        name : req.body.name,
     });
     user.save()
         .then(response =>{
