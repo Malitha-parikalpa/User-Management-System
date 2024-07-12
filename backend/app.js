@@ -20,7 +20,7 @@ app.get('/users',(req,res) =>{
 
 })
 
-app.post('/createusers', (req,res) => {
+app.post('/createuser', (req,res) => {
     controller.addUser(req.body,(callback)=>{
         res.send();
     });
@@ -32,7 +32,7 @@ app.put('/updateusers', (req,res) => {
     });
 });
 
-app.delete('/updateusers', (req,res) => {
+app.delete('/deleteuser', (req,res) => {
     controller.deleteUser(req.body,(callback)=>{
         res.send(callback);
     });
