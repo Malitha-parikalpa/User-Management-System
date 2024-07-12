@@ -7,11 +7,11 @@ const getUsers = (req,res,next) => {
             res.json({response})
         })
         .catch(error => {
-            res.json({ message: error})
+            res.json({ error})
         });
 };
  
-//create
+//create user 
 const addUser = (req,res,next) => {
     const user = new User({
         id : req.body.id,
@@ -22,9 +22,21 @@ const addUser = (req,res,next) => {
             res.json({response})
         })
         .catch(error => {
-            res.json({ message: error})
+            res.json({error})
         });
 }
+//update User
+const updateUser = (req,res,next) =>{
+    const {id,name} = req.body; //obj destructuring  //get a value in id and name
+    User.updateOne({id:id},{$set: {name:name}})
+    .then(response =>{
+        res.json({response})
+    })
+    .catch(error => {
+        res.json({error})
+    });
+} 
+
 
 
 
