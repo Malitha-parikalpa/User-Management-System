@@ -4,9 +4,9 @@
 
  //create routes
  router.get('/users',controller.getUsers);
- router.get('/createuser',controller.addUser);
- router.get('/updateusers',controller.updateUser);
- router.get('/deleteuser',controller.deleteUser);
+ router.post('/createuser',controller.addUser);
+ router.put('/updateusers',controller.updateUser);
+ router.delete('/deleteuser',controller.deleteUser);
  
 module.exports = router;
 
