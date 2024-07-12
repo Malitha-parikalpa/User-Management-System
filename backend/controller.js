@@ -1,23 +1,17 @@
-const users = [
-    {
-        id:1,
-        name: 'nimal',
-    }
-    ,
-    {
-        id:2,
-        name: 'sunil',
-    }
-];
+const user = require('.model');
 
-const getUsers = (cb) => {
-    cb(users);
+//create
+const getUsers = (req,res,next) => {
+    User.find()
+        .then(response =>{
+            res.json({response})
+        })
+        .catch(error => {
+            res.json({ message: error})
+        })
 };
+ 
 
-const getUserById = (id,cb) => {
-    const user = users.find(user => user.id == id);
-    cb(user);
-};
 
 exports.getUsers = getUsers;
 exports.getUserById = getUserById;
