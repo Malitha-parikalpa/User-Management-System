@@ -1,6 +1,6 @@
 const User = require('./model');
 
-//retreave user
+//retrieve user
 const getUsers = (req,res,next) => {
     User.find()
         .then(response =>{
