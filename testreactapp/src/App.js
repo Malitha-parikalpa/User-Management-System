@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className='App-Header'>
        <h1>Welcome to Maliboycode vlog</h1>
        <button className='user-button' onClick={()=>navigate('/users')}>Users</button>
       </header>
