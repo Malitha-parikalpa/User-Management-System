@@ -1,6 +1,7 @@
+import React from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from "@mui/material";
 
-const UsersTable = ({ rows }) => {
+const UsersTable = ({ rows, selectUser,deleteUser }) => {
     return (
         <TableContainer component={Paper}>
             <Table>
@@ -16,19 +17,18 @@ const UsersTable = ({ rows }) => {
                         rows.length > 0 ? rows.map(row => (
                             <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                 <TableCell component='th' scope="row">{row.id}</TableCell>
-                                <TableCell>{row.name}</TableCell>
+                                <TableCell component='th' scope="row">{row.name}</TableCell>
                                 <TableCell>
-                                    <Button 
-                                        variant="contained"
+                                    <Button
                                         sx={{ margin: '0px 10px' }}
-                                        onClick={() => {}}
+                                        onClick={() => selectUser({ id: row.id, name: row.name })}
                                     >
                                         Update
                                     </Button>
-                                    <Button 
+                                    <Button
                                         variant="contained"
                                         sx={{ margin: '0px 10px' }}
-                                        onClick={() => {}}
+                                        onClick={() => deleteUser({id: row.id})}
                                     >
                                         Delete
                                     </Button>
@@ -44,6 +44,6 @@ const UsersTable = ({ rows }) => {
             </Table>
         </TableContainer>
     );
-}
+};
 
 export default UsersTable;
