@@ -1,10 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Grid, TextField, Typography } from '@mui/material';
+// import { addUser } from '../../backend/controller';
 
-const UserForm = (props) => {
+const UserForm = ({addUser,updateUser,submitted,data,isEdit}) => {
+
     const [id, setId] = useState('');
     const [name, setName] = useState('');
 
+    useEffect(() => {
+        if (!submitted){
+            setId(0);
+            setName('');
+        }
+    }, [submitted]);
+
+
+    useEffect(() =>{
+        if(data?.id && data.id !==0)
+        {
+            setId(data.id);
+            setName(data.name)
+        }
+    },[data]);
     return (
         <Grid
             container
@@ -68,21 +85,31 @@ const UserForm = (props) => {
             </Grid>
 
             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Button
-                    variant="contained"
-                    sx={{
-                        marginLeft:'20px',
-                        marginTop:'25px', 
-                        backgroundColor: '#00c6e6',
-                        color: '#000000',
-                        '&:hover': {
-                            opacity: '0.7',
-                            backgroundColor: '#00c6e6',
-                        },
-                    }}
-                >
-                    Submit
-                </Button>
+            <Button
+            variant="contained"
+            sx={{
+                margin :'auto',
+                marginBottom:'20px', 
+                backgroundColor: '#00c6e6',
+                color: '#000000',
+                marginLeft: '15px',
+                marginTop:'20px',
+                '&:hover': {
+                    opacity: '0.7',
+                    backgroundColor: '#00c6e6',
+                },
+            }}
+            onClick={() => {
+                if (isEdit) {
+                    updateUser({ id, name }); // Ensures the updated user is sent
+                } else {
+                    addUser({ id, name });
+                }
+            }}
+        >
+            {isEdit ? 'Update' : 'Add'}
+        </Button>
+
             </Grid>
         </Grid>
     );
