@@ -55,7 +55,7 @@ const Users = () => {
     
 
     const deleteUser = (data) => {
-        Axios.delete(`http://localhost:3001/api/deleteuser/`)
+        Axios.delete(`http://localhost:3001/api/deleteuser/`,data)
             .then(() => {
                 getUsers(); // Refresh list after deletion
             })
